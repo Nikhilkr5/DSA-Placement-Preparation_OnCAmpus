@@ -1,0 +1,42 @@
+#include<iostream>
+#include<queue>
+using namespace std;
+int main(){
+    //creation
+    queue<int> q;
+
+    //insertion
+    q.push(10);
+    //10
+
+    q.push(20);
+    //10,20
+
+    q.push(30);
+    //10,20,30
+
+    q.push(40);
+    //10,20,30,40
+
+    cout<<q.size()<<endl;
+    //q.clear();  //not available in queue
+    //
+
+    q.pop();
+    //20,30,40
+    cout<<q.size()<<endl;
+    cout<<"Front-> "<<q.front()<<endl;
+    cout<<"Back-> "<<q.back()<<endl;
+
+
+    if(q.empty() == true){
+        cout<<"Queue is empty"<<endl;
+    } else {
+        cout<<"Queue is not empty"<<endl;
+    }
+
+
+
+
+    return 0;
+}

@@ -1,0 +1,110 @@
+📒 ✅ SUFFIX SUM CHEAT SHEET (C++)
+🟢 1. Type 1 — Inclusive Suffix (i → n-1)
+📌 Meaning:
+suffix[i] = sum from index i → n-1 (INCLUDING i)
+vector<int> buildSuffixInclusive(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> suffix(n);
+
+    suffix[n - 1] = nums[n - 1];
+
+    for (int i = n - 2; i >= 0; i--) {
+        suffix[i] = suffix[i + 1] + nums[i];
+    }
+
+    return suffix;
+}
+🔵 2. Type 2 — Right Sum (i+1 → n-1)
+📌 Meaning:
+suffix[i] = sum of elements to the RIGHT of index i
+vector<int> buildRightSum(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> suffix(n, 0);
+
+    for (int i = n - 2; i >= 0; i--) {
+        suffix[i] = suffix[i + 1] + nums[i + 1];
+    }
+
+    return suffix;
+}
+🟣 3. Type 3 — Standard CP Suffix (MOST USEFUL)
+📌 Meaning:
+suffix[i] = sum from i → n-1
+suffix[n] = 0
+vector<int> buildSuffix(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> suffix(n + 1, 0);
+
+    for (int i = n - 1; i >= 0; i--) {
+        suffix[i] = suffix[i + 1] + nums[i];
+    }
+
+    return suffix;
+}
+🔥 Range Sum Using Suffix
+Sum from l → r:
+int rangeSum(vector<int>& suffix, int l, int r) {
+    return suffix[l] - suffix[r + 1];
+}
+🟡 4. Prefix + Suffix Combined (VERY IMPORTANT)
+📌 Use:
+Pivot index
+Left sum vs right sum
+Balance problems
+vector<int> prefix(n, 0), suffix(n, 0);
+
+// prefix
+for(int i=1;i<n;i++)
+    prefix[i] = prefix[i-1] + nums[i-1];
+
+// suffix
+for(int i=n-2;i>=0;i--)
+    suffix[i] = suffix[i+1] + nums[i+1];
+🟠 5. Prefix + Suffix for Product (Classic)
+📌 Use:
+Product of array except self
+vector<int> productExceptSelf(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> prefix(n, 1), suffix(n, 1), res(n);
+
+    for(int i=1;i<n;i++)
+        prefix[i] = prefix[i-1] * nums[i-1];
+
+    for(int i=n-2;i>=0;i--)
+        suffix[i] = suffix[i+1] * nums[i+1];
+
+    for(int i=0;i<n;i++)
+        res[i] = prefix[i] * suffix[i];
+
+    return res;
+}
+🔴 6. Suffix Max / Min
+📌 Use:
+Range max/min queries
+Right side comparisons
+vector<int> suffixMax(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> suf(n);
+
+    suf[n-1] = nums[n-1];
+
+    for(int i=n-2;i>=0;i--){
+        suf[i] = max(suf[i+1], nums[i]);
+    }
+
+    return suf;
+}
+🧠 FINAL MEMORY MAP
+1. Inclusive → suffix[i] = sum(i → n-1)
+2. Right sum → excludes current index
+3. n+1 suffix → best for range queries
+4. Prefix + suffix → balance problems
+5. Product prefix/suffix → special case
+6. Suffix max/min → greedy / comparisons
+🎯 What YOU should focus on
+🔥 MUST MASTER:
+- Inclusive suffix
+- Right sum suffix
+- Prefix + suffix combo
+🚀 One-Line Summary
+Suffix = prefix but from right side

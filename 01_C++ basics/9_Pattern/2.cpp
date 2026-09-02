@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    //for(int row =0;row<4; row++){
+    //  for(int col=0;col<4;col++){
+    //      cout<<col+1;
+    //    }
+    //}
+
+
+    for(int i = 0;i<4;i++){
+        for(int j=0; j<4; j++){
+            cout<<j+1<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}

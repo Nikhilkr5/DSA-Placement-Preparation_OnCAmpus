@@ -1,0 +1,27 @@
+#include<iostream>
+#include<map>
+
+using namespace std;
+
+int main(){
+    multimap<string, int> m;
+
+    m.emplace("tv",100);
+    m.emplace("tv",100);
+    m.emplace("tv",100);
+    m.emplace("tv",100);
+
+    //m.erase("tv");
+//for deleting one instance of tv then can use iterator
+    m.erase(m.find("tv"));
+    
+
+    for(auto p: m){
+        cout<<p.first <<" "<< p.second << endl;
+
+    }
+
+    return 0;
+
+
+}

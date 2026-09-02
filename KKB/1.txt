@@ -1,0 +1,104 @@
+Ahh good catch — this is just C++ syntax, not algorithm logic. Let’s demystify it.
+
+🔹 The Line You’re Asking About
+for (auto &m : meetings)
+
+
+This is called a range-based for loop in C++.
+
+It means:
+
+“For each element inside meetings, call it m and do something with it.”
+
+🔹 What is meetings?
+
+In this problem:
+
+vector<vector<int>>& meetings
+
+
+So meetings looks like this:
+
+[
+  [2, 3],
+  [5, 7],
+  [9, 10]
+]
+
+
+It’s a list of intervals, and each interval is a vector<int> with 2 values:
+
+m[0] = start
+m[1] = end
+
+🔹 What does auto &m mean?
+auto
+
+C++ automatically figures out the type.
+Here, each element in meetings is:
+
+vector<int>
+
+
+So m becomes a vector<int>.
+
+& (Reference)
+
+This means don’t make a copy, just use the original element.
+
+Without &, C++ would copy each meeting interval.
+With &, we directly access the original interval (faster and standard practice).
+
+🔹 Same Loop Written the Long Way
+
+Your line:
+
+for (auto &m : meetings)
+
+
+Is the same as writing:
+
+for (int i = 0; i < meetings.size(); i++) {
+    vector<int> &m = meetings[i];
+
+
+So inside the loop:
+
+m[0] → meeting start
+
+m[1] → meeting end
+
+🔹 Example Walkthrough
+
+If:
+
+meetings = {{2,3}, {5,7}}
+
+
+Loop runs twice:
+
+First iteration
+m = {2,3}
+m[0] = 2
+m[1] = 3
+
+Second iteration
+m = {5,7}
+m[0] = 5
+m[1] = 7
+
+🔹 Why Interviewers Like This Style
+
+It’s:
+✔ Short
+✔ Clean
+✔ Avoids indexing mistakes
+✔ Efficient (no copies because of &)
+
+🧠 Quick Memory Trick
+for (auto &x : container)
+
+
+Means:
+
+“For each item x inside container”
