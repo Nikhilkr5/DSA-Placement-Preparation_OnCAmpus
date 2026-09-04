@@ -1,3 +1,5 @@
+// Find the longest word in a sentence.
+
 #include<bits/stdc++.h>
 using namespace std;
 

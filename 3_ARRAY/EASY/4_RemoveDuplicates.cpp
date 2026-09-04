@@ -111,7 +111,6 @@ for (int i = 0; i < n; i++) {
     set.insert(arr[i]);
 }
 
-
 You call insert n times.
 Each insert costs at most O(log n) (since the tree can grow up to size n).
 So total:

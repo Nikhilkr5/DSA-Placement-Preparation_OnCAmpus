@@ -1,3 +1,5 @@
+// Find the frequency of each character (without a map).
+
 #include <bits/stdc++.h>
 using namespace std;
 

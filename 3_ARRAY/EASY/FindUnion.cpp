@@ -56,7 +56,7 @@ Since map is ordered, the union will also be sorted automatically.
 
 //     // Insert all elements of arr2 into map   
 //     for(int i=0;i<m;i++)
-//         freq(arr2[i])++;
+//         freq[arr2[i]]++;
 
 //     //Takeonly the keys (unique elements) from map
 //     for(auto &it : freq)

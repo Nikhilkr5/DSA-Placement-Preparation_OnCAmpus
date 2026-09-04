@@ -1,3 +1,10 @@
+/*
+Convert the sentence to title case.
+VISIBLE EXAMPLE
+Input: "HELLO WORLD"
+Output: "Hello World"
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
