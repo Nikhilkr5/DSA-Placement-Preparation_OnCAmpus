@@ -1,0 +1,158 @@
+PROBLEM
+
+Given an array containing only 0s and 1s, sort it so that all 0s come before 1s.
+
+Example:
+
+Input : [1, 0, 1, 0, 1]
+Output: [0, 0, 1, 1, 1]
+
+APPROACH 1: BRUTE FORCE (SORTING)
+IDEA
+
+Use a general sorting algorithm.
+
+CODE
+sort(arr.begin(), arr.end());
+
+TIME COMPLEXITY
+
+O(n log n)
+
+SPACE COMPLEXITY
+
+O(1) (or depends on sort implementation)
+
+VERDICT
+
+❌ Not optimal
+❌ Overkill for only 0s and 1s
+✅ Acceptable as brute force explanation
+
+APPROACH 2: BETTER (COUNTING)
+IDEA
+
+Count number of 0s and 1s.
+
+Overwrite the array.
+
+ALGORITHM
+
+Count zeros (count0)
+
+Remaining elements are 1s
+
+Fill array accordingly
+
+CODE
+void sortColors(vector<int>& arr) {
+    int count0 = 0;
+
+    for (int x : arr) {
+        if (x == 0) count0++;
+    }
+
+    for (int i = 0; i < arr.size(); i++) {
+        if (i < count0)
+            arr[i] = 0;
+        else
+            arr[i] = 1;
+    }
+}
+
+TIME COMPLEXITY
+
+O(n)
+
+SPACE COMPLEXITY
+
+O(1)
+
+VERDICT
+
+✅ Efficient
+✅ Easy to explain
+❌ Requires two passes
+
+APPROACH 3: OPTIMAL (TWO POINTER)
+IDEA
+
+Maintain two pointers:
+
+low → where next 0 should go
+
+high → where next 1 should go 
+
+ALGORITHM
+
+Initialize:
+
+low = 0
+high = n - 1
+
+
+While low < high:
+
+If arr[low] == 0 → low++
+
+Else if arr[high] == 1 → high--
+
+Else → swap(arr[low], arr[high])
+
+CODE
+void sortColors(vector<int>& arr) {
+    int low = 0, high = arr.size() - 1;
+
+    while (low < high) {
+        if (arr[low] == 0) {
+            low++;
+        }
+        else if (arr[high] == 1) {
+            high--;
+        }
+        else {
+            swap(arr[low], arr[high]);
+            low++;
+            high--;
+        }
+    }
+}
+
+TIME COMPLEXITY
+
+O(n)
+
+SPACE COMPLEXITY
+
+O(1)
+
+VERDICT
+
+✅ One pass
+✅ Most optimal
+✅ Interview preferred
+
+COMPARISON SUMMARY
+Approach	 Time	Space	Passes	Interview
+Brute (sort)	O(n log n)	O(1)	Multiple	❌
+Better (count)	O(n)	O(1)	Two	✅
+Optimal (2 ptr)	O(n)	O(1)	One	⭐⭐⭐
+INTERVIEW FLOW (BEST ANSWER)
+
+“Brute force is sorting the array.
+A better approach is counting 0s and 1s.
+The optimal approach uses two pointers and sorts the array in one pass.”
+
+FINAL RULE (REMEMBER)
+
+0s & 1s only → Two pointers
+
+0s, 1s & 2s → Dutch National Flag
+
+If you want, I can also:
+
+Dry run with diagram
+
+Convert to .txt VS Code notes
+
+Extend to 0,1,2 case

@@ -1,0 +1,42 @@
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+void sortTwoColors(vector<int>& arr) {
+    int low = 0, high = arr.size() - 1;
+
+    while (low < high) {
+        if (arr[low] == 0) {
+            low++;
+        }
+        else if (arr[high] == 1) {
+            high--;
+        }
+        else {
+            swap(arr[low], arr[high]);
+            low++;
+            high--;
+        }
+    }
+}
+
+int main(){
+    vector<int> nums = {0,1,1,1,0,0,1,1};
+
+    cout<<"Before: "<<endl;
+    for(int n:nums){
+        cout<<n<<endl;
+    }
+
+    sortTwoColors(nums);
+
+    cout<<"After:"<<endl;
+    for(int n: nums){
+        cout<< n << endl;
+    }
+
+    return 0;
+}
+

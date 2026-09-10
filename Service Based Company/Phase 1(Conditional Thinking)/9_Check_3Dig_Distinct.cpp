@@ -1,3 +1,9 @@
+/*
+Take a 3-digit number and check if all digits are distinct.
+VISIBLE EXAMPLE
+Input: 123
+Output: Yes, all distinc
+*/
 #include <bits/stdc++.h>
 using namespace std;
 

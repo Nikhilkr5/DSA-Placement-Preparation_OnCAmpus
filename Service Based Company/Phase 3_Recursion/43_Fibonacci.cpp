@@ -1,5 +1,12 @@
+/*
+Find the nth Fibonacci number recursively.
+VISIBLE EXAMPLE
+Input: 6
+Output: 8
+*/
+
 #include<bits/stdc++.h>
-using namepsace std;
+using namespace std;
 
 int fibonacci(int n){
     if(n <= 1){
@@ -13,6 +20,6 @@ int main(){
     int n;
     cin>>n;
 
-    cout<fibonacci(n);
+    cout<<fibonacci(n);
     return 0;
 }
